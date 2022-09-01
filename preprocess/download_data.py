@@ -35,14 +35,14 @@ def main():
 
     # download
     print(f'downloading train...')
-    url = f"https://drive.google.com/uc?id={args.train_url}"
-    gdown.download(url, f"{args.data_save_dir}/train.zip")
-    print(f'downloading val...')
-    url = f"https://drive.google.com/uc?id={args.val_url}"
-    gdown.download(url, f"{args.data_save_dir}/val.zip")
-    print(f'downloading test...')
-    url = f"https://drive.google.com/uc?id={args.test_url}"
-    gdown.download(url, f"{args.data_save_dir}/test.zip")
+    # url = f"https://drive.google.com/uc?id={args.train_url}"
+    # gdown.download(url, f"{args.data_save_dir}/train.zip")
+    # print(f'downloading val...')
+    # url = f"https://drive.google.com/uc?id={args.val_url}"
+    # gdown.download(url, f"{args.data_save_dir}/val.zip")
+    # print(f'downloading test...')
+    # url = f"https://drive.google.com/uc?id={args.test_url}"
+    # gdown.download(url, f"{args.data_save_dir}/test.zip")
 
     # unzip
     zip_path = os.path.join(args.data_save_dir, "train.zip")

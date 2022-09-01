@@ -40,6 +40,9 @@ python preprocess/download_data.py  --data_save_dir  /ssd1/zhiwen/datasets/svg_r
 ```
 python preprocess/svg2png.py --train_00 /ssd1/zhiwen/datasets/svg_raw/train-00 --train_01 /ssd1/zhiwen/datasets/svg_raw/train-01  --test_00  /ssd1/zhiwen/datasets/svg_raw/test-00   --svg_dir /ssd1/zhiwen/datasets/svg_processed/svg   --png_dir /ssd1/zhiwen/datasets/svg_processed/png   --scale 7  --cvt_color
 ```
+```
+python preprocess/svg2png.py --data_save_dir /ssd1/zhiwen/datasets/svg_raw --scale 7 --seed 100 --cvt_color
+```
 ### generate npy format data
 ```
 python preprocess/preprocess_svg.py -i /ssd1/zhiwen/datasets/svg_processed/svg/train  -o /ssd1/zhiwen/datasets/svg_processed/npy/train   --thread_num  48
