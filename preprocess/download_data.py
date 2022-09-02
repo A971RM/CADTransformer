@@ -1,7 +1,25 @@
 """Download FloorPlanCAD dataset."""
 import os
 import argparse
+import random
+import zipfile
 import gdown
+
+def unzip_sample(zip_path, unzip_dir, sample_ratio):
+    """
+    unzip files with a ratio
+    """
+    assert zipfile.is_zipfile(zip_path), f"{zip_path} is not zipfile"
+    with zipfile.ZipFile(zip_path) as myzip:
+        for zipinfo in myzip.infolist():
+            if zipinfo.is_dir():
+                continue
+            # random.random()
+            # 返回 [0.0, 1.0) 范围内的下一个随机浮点数。
+            if random.random() >= sample_ratio:
+                continue
+            zipfile.ZipFile.extract(zipinfo, path=unzip_dir)
+
 
 def parse_args():
     '''
@@ -22,6 +40,10 @@ def parse_args():
     parser.add_argument('--test_url', type=str,
                         default="1Hc4-ggsUMoB_5uqJdqYRn9K73QS8rOgG",
                         help='google drive id'
+                        )
+    parser.add_argument('--sample_ratio', type=float,
+                        default=1.0,
+                        help='pick dataset'
                         )
     args = parser.parse_args()
     return args
@@ -48,20 +70,16 @@ def main():
     zip_path = os.path.join(args.data_save_dir, "train.zip")
     unzip_dir = os.path.join(args.data_save_dir, "train")
     os.makedirs(unzip_dir, exist_ok=True)
-    cmd = f"unzip {zip_path} -d {unzip_dir}"
-    os.system(cmd)
+    unzip_sample(zip_path, unzip_dir, args.sample_ratio)
 
     zip_path = os.path.join(args.data_save_dir, "val.zip")
     unzip_dir = os.path.join(args.data_save_dir, "val")
     os.makedirs(unzip_dir, exist_ok=True)
-    cmd = f"unzip {zip_path} -d {unzip_dir}"
-    os.system(cmd)
+    unzip_sample(zip_path, unzip_dir, args.sample_ratio)
 
     zip_path = os.path.join(args.data_save_dir, "test.zip")
     unzip_dir = os.path.join(args.data_save_dir, "test")
-    os.makedirs(unzip_dir, exist_ok=True)
-    cmd = f"unzip {zip_path} -d {unzip_dir}"
-    os.system(cmd)
+    unzip_sample(zip_path, unzip_dir, args.sample_ratio)
 
 if __name__ == '__main__':
     main()
