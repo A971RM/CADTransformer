@@ -20,6 +20,11 @@ svgpathtools
 ```
 Our code should compatible with pytorch>=1.5.0
 
+```
+pip install scikit-learn scikit-image pillow opencv-python matplotlib scipy tqdm gdown svgpathtools lxml pandas yacs cairosvg
+```
+
+
 ## Download Pretrained HRNet
 The Input Embedding network is based on HRNet-W48-C, the pretrained model on ImageNet can be download from official [cloud drive](https://github.com/HRNet/HRNet-Image-Classification).
 ```
