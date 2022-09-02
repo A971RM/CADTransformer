@@ -18,7 +18,7 @@ def unzip_sample(zip_path, unzip_dir, sample_ratio):
             # 返回 [0.0, 1.0) 范围内的下一个随机浮点数。
             if random.random() >= sample_ratio:
                 continue
-            zipfile.ZipFile.extract(zipinfo, path=unzip_dir)
+            myzip.extract(zipinfo, path=unzip_dir)
 
 
 def parse_args():
