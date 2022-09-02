@@ -44,7 +44,19 @@ def cvt_line_color(svg_path, output_dir=None):
 def scaleSVG(svg_path, scale, cvt_color=False):
     '''Scale the coordinates of segments
     '''
-    out_path = svg_path
+    return scaleSVG2(svg_path, svg_path, scale, cvt_color)
+
+
+def scaleSVG2(svg_path, svg_path2, scale, cvt_color=False):
+    """
+    缩放一个svg，保存到另一个位置
+    :param svg_path:
+    :param svg_path2:
+    :param scale:
+    :param cvt_color:
+    :return:
+    """
+    out_path = svg_path2
     parsing_list = svg_reader(svg_path)
     for line in parsing_list:
         tag = line["tag"].split("svg}")[-1]
